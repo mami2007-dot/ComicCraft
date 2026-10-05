@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Comic Craft - Comic Preview</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            color: #222;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .header {
+            background: #333;
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0 0 10px 0;
+        }
+
+        .header p {
+            margin: 0;
+            color: #ddd;
+        }
+
+        .card {
+            background: white;
+            margin-top: 25px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .card h2 {
+            margin-top: 0;
+        }
+
+        .prompt {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .story {
+            white-space: pre-wrap;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .panels {
+            margin-top: 30px;
+        }
+
+        .panel {
+            background: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .panel img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .panel h3 {
+            margin-top: 0;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .back-button:hover {
+            background: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+
+            <h1>🎨 Comic Craft</h1>
+
+            <p>Your AI-generated comic story</p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>💡 Your Comic Idea</h2>
+
+            <div class="prompt">
+                {{ prompt }}
+            </div>
+
+
+            <h2>📖 Generated Story</h2>
+
+            <div class="story">
+                {{ story }}
+            </div>
+
+
+            {% if panels %}
+
+            <div class="panels">
+
+                <h2>🖼️ Comic Panels</h2>
+
+                {% for panel in panels %}
+
+                <div class="panel">
+
+                    {% if panel.image %}
+                    <img src="{{ panel.image }}" alt="Comic Panel">
+                    {% endif %}
+
+                    {% if panel.title %}
+                    <h3>{{ panel.title }}</h3>
+                    {% endif %}
+
+                    {% if panel.description %}
+                    <p>{{ panel.description }}</p>
+                    {% endif %}
+
+                    {% if panel.dialogue %}
+                    <p>
+                        <strong>Dialogue:</strong>
+                        {{ panel.dialogue }}
+                    </p>
+                    {% endif %}
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            {% endif %}
+
+
+            <a href="/" class="back-button">
+                ← Create Another Comic
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Comic Craft - AI Comic Story Creator</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            color: #222;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 50px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 35px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 180px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            resize: vertical;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #555;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            background: #333;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #555;
+        }
+
+        .error {
+            margin-top: 20px;
+            padding: 15px;
+            background: #ffe5e5;
+            color: #b00020;
+            border-radius: 8px;
+        }
+
+        .info {
+            margin-top: 30px;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🎨 Comic Craft</h1>
+
+        <p class="subtitle">
+            AI Comic Story Creator
+        </p>
+
+        <form action="/generate" method="post">
+
+            <label for="prompt">
+                Enter your comic idea:
+            </label>
+
+            <textarea
+                id="prompt"
+                name="prompt"
+                placeholder="Example: A young hero discovers a magical forest..."
+                required
+            ></textarea>
+
+            <div class="buttons">
+
+                <button type="submit">
+                    Generate Comic
+                </button>
+
+            </div>
+
+        </form>
+
+
+        <form action="/generate-detailed" method="post">
+
+            <div class="buttons">
+
+                <button type="submit">
+                    Generate Detailed Comic
+                </button>
+
+            </div>
+
+        </form>
+
+
+        {% if error %}
+
+        <div class="error">
+            <strong>Error:</strong>
+            {{ error }}
+        </div>
+
+        {% endif %}
+
+
+        <div class="info">
+
+            <strong>How it works:</strong>
+
+            <p>
+                Enter a story idea and Comic Craft will use Gemini
+                to generate your comic story.
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
